@@ -9,7 +9,7 @@ pico_sdk_init()
 
 if (TARGET tinyusb_device)
     add_executable(timer
-        src/picow_blink.c
+        src/picow_blink.cpp
         )
 
 pico_enable_stdio_usb(timer 1)
