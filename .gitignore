@@ -56,3 +56,4 @@ build/
 
 #Ignore symlinked pico-sdk
 pico-sdk
+FreeRTOS-Kernel

@@ -7,11 +7,11 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
-
 if (TARGET tinyusb_device)
     set(WIFI_SSID "${WIFI_SSID}" CACHE INTERNAL "WiFi SSID")
     set(WIFI_PASSWORD "${WIFI_PASSWORD}" CACHE INTERNAL "WiFi password")
-    
+    set(FREERTOS_KERNEL_PATH "${FREERTOS_KERNEL_PATH}")
+
     if ("${WIFI_SSID}" STREQUAL "")
         message("WIFI_SSID is not defined")
     elseif ("${WIFI_PASSWORD}" STREQUAL "")
@@ -29,9 +29,15 @@ if (TARGET tinyusb_device)
 
     pico_add_extra_outputs(timer)
 
-    target_include_directories(timer PRIVATE ${CMAKE_CURRENT_LIST_DIR} )
-
-    target_link_libraries(timer pico_cyw43_arch_lwip_threadsafe_background pico_stdlib)
+    target_include_directories(timer PRIVATE 
+        ${CMAKE_CURRENT_LIST_DIR}/src
+        ${CMAKE_CURRENT_LIST_DIR}/inc/lwip
+        )
+    
+    target_link_libraries(timer 
+        pico_cyw43_arch_lwip_threadsafe_background 
+        pico_stdlib
+        )
 
     target_compile_definitions(timer PRIVATE
         WIFI_SSID=\"${WIFI_SSID}\"
