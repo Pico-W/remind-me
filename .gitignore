@@ -54,3 +54,4 @@ dkms.conf
 # Build
 build/
 pico-sdk
+tags

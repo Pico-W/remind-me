@@ -21,6 +21,7 @@ if (TARGET tinyusb_device)
     endif()
     
     add_executable(timer
+        src/caller.cpp
         src/test-wifi.c
         )
 
@@ -29,9 +30,10 @@ if (TARGET tinyusb_device)
 
     pico_add_extra_outputs(timer)
 
-    target_include_directories(timer PRIVATE 
+    target_include_directories(timer PUBLIC 
         ${CMAKE_CURRENT_LIST_DIR}/src
         ${CMAKE_CURRENT_LIST_DIR}/inc/lwip
+        #${CMAKE_CURRENT_LIST_DIR}/pico-sdk/src/common/pico_base/include
         )
     
     target_link_libraries(timer 
@@ -39,7 +41,7 @@ if (TARGET tinyusb_device)
         pico_stdlib
         )
 
-    target_compile_definitions(timer PRIVATE
+    target_compile_definitions(timer PUBLIC
         WIFI_SSID=\"${WIFI_SSID}\"
         WIFI_PASSWORD=\"${WIFI_PASSWORD}\"
         )
@@ -47,3 +49,5 @@ if (TARGET tinyusb_device)
 elseif(PICO_ON_DEVICE)
     message(WARNING "not building hello_usb because TinyUSB submodule is not initialized in the SDK")
 endif()
+
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --verbose")

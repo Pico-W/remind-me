@@ -1,16 +1,10 @@
-#include <stdbool.h>
-#include <stdio.h>
-
-#include "pico/stdlib.h"
-#include "pico/cyw43_arch.h"
-#include "pico/time.h"
+#include "test-wifi.h"
 
 #if defined(WIFI_SSID) && defined(WIFI_PASSWORD)
 #define WIFI_DEFINED 1
 #endif
 
-
-int main() {
+int connect_wifi(void) {
  stdio_init_all();
  bool connected = false;
 
