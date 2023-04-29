@@ -54,4 +54,3 @@ dkms.conf
 # Build
 build/
 pico-sdk
-pico-sdk/
