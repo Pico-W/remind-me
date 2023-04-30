@@ -33,7 +33,6 @@ if (TARGET tinyusb_device)
     target_include_directories(timer PUBLIC 
         ${CMAKE_CURRENT_LIST_DIR}/src
         ${CMAKE_CURRENT_LIST_DIR}/inc/lwip
-        #${CMAKE_CURRENT_LIST_DIR}/pico-sdk/src/common/pico_base/include
         )
     
     target_link_libraries(timer 
