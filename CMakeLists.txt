@@ -23,6 +23,7 @@ if (TARGET tinyusb_device)
     add_executable(timer
         src/caller.cpp
         src/test-wifi.c
+        src/pico_clock.cpp
         )
 
     pico_enable_stdio_usb(timer 1)
