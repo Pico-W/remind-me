@@ -1,9 +1,9 @@
-#include <stdlib.h>
+#include <iostream>
 #include "test-wifi.h"
 
 int main()
 {
-    //std::cout<< "Hello World" << std::endl;
+    std::cout<< "Hello World" << std::endl;
 
     int status = connect_wifi();
 

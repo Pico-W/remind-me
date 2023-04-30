@@ -8,6 +8,12 @@
 #include "pico/cyw43_arch.h"
 #include "pico/time.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 int connect_wifi(void);
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* TEST_WIFI_H */
